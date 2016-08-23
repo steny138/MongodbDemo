@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MongoDbDemo
 {
-    class Program
+    class MongodbDriverDemo
     {
         static void Main(string[] args)
         {

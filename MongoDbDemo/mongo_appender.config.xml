@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<log4net>
+  <appender name="MongoDBAppender" type="Log4Mongo.MongoDBAppender, Log4Mongo">
+    <connectionString value="mongodb://umongotkt:umongotkt#596@DBA-UMONGO:27017/DBA_UTKT?authMechanism=MONGODB-CR" />
+    <collectionName value="log" />
+    <field>
+      <name value="timestamp" />
+      <layout type="log4net.Layout.RawTimeStampLayout" />
+    </field>
+    <field>
+      <name value="level" />
+      <layout type="log4net.Layout.PatternLayout" value="%level" />
+    </field>
+    <field>
+      <name value="thread" />
+      <layout type="log4net.Layout.PatternLayout" value="%thread" />
+    </field>
+    <field>
+      <name value="logger" />
+      <layout type="log4net.Layout.PatternLayout" value="%logger" />
+    </field>
+    <field>
+      <name value="message" />
+      <layout type="log4net.Layout.PatternLayout" value="%message" />
+    </field>
+  </appender>
+  <root>
+    <!-- OFF, FATAL, ERROR, WARN, DEBUG, INFO, ALL -->
+    <level value="ALL" />
+    <appender-ref ref="MongoDBAppender" />
+  </root>
+</log4net>
