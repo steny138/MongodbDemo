@@ -69,7 +69,7 @@ namespace MongoDbDemo
             {
                 await collection.InsertOneAsync(source);
             }
-            catch (OperationCanceledException oex)
+            catch (OperationCanceledException)
             {
                 return false;
             }
@@ -116,15 +116,15 @@ namespace MongoDbDemo
             return result;
         }
 
-        public async Task<bool> updateAsync<T>(string collectionName, Expression<Func<T, bool>> condition, List<MongodbParameter> updatePara)
+        public async Task<bool> updateAsync<T>(string collectionName, string lastModifiedDateField, Expression<Func<T, bool>> condition, List<MongodbParameter> updatePara)
         {
             IMongoCollection<T> collection = _database.GetCollection<T>(collectionName);
 
             var update = Builders<T>.Update;
-            var updateDef = update.CurrentDate("lastModified");
+            var updateDef = update.CurrentDate(lastModifiedDateField);
             foreach (MongodbParameter para in updatePara)
             {
-                update.Set(para.key, para.value);
+                updateDef = updateDef.Set(para.key, para.value);
             }
 
             var result = await collection.UpdateManyAsync<T>(condition, updateDef);

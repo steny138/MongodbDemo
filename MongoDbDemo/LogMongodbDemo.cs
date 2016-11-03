@@ -18,7 +18,7 @@ namespace MongoDbDemo
             Console.WriteLine("Or you wanna to exit this application, you can enter 'exit' to leave. ");
 
             MongoDemo2 demo = new MongoDemo2();
-            demo.t();
+            demo.demo_insert();
 
             //while ((command = Console.ReadLine().ToLower()) != "exit")
             //{

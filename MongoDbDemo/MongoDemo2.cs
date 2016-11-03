@@ -12,7 +12,7 @@ namespace MongoDbDemo
 {
     public class MongoDemo2
     {
-       public void t()
+       public void demo_insert()
         {
           
 
